@@ -1,0 +1,65 @@
+{% load static %}  <!-- Si necesitas cargar archivos estáticos -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - e-Commerce Mangas</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Agrega otros estilos si es necesario -->
+</head>
+<body>
+    <!-- Carrusel de productos destacados -->
+    <div id="productos-destacados" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#productos-destacados" data-slide-to="0" class="active"></li>
+            <li data-target="#productos-destacados" data-slide-to="1"></li>
+            <li data-target="#productos-destacados" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block img-fluid carousel-img" src="{% static 'eva05.jpeg' %}" alt="Producto 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Neon Genesis Evangelion</h5>
+                    <p>Es un icónico manga protagonizado por Shinji Ikari, un estudiante reclutado para defender a la humanidad contra misteriosas criaturas llamadas "ángeles".</p>
+                    <p>Precio: $7.990</p>
+                </div>
+            </div>
+            <!-- Añadir más items del carrusel según sea necesario -->
+        </div>
+        <a class="carousel-control-prev" href="#productos-destacados" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#productos-destacados" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+
+    <!-- Galería de productos -->
+    <div class="container mt-5">
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="{% static producto.imagen %}" class="card-img-top" alt="{{ producto.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <p class="card-text">Precio: ${{ producto.precio }}</p>
+                        <p class="card-text">Stock: {{ producto.stock }}</p>
+                        <p class="card-text">Editorial: {{ producto.editorial }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Agrega otros scripts si es necesario -->
+</body>
+</html>

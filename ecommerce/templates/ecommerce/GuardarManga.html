@@ -1,0 +1,54 @@
+{% load static %}  <!-- Si necesitas cargar archivos estáticos -->
+
+{% block tituloPestana %} Guardar Manga {% endblock %}
+{% block tituloPagina %} Manga {% endblock %}
+
+{% block contenido %}
+<form action="{% url 'guardar_manga' %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12 col-md-2 offset-md-3">Título</div>
+        <div class="col-12 col-md-5">
+            <input type="text" name="txtTitulo" class="form-control">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-2 offset-md-3">Autor</div>
+        <div class="col-12 col-md-5">
+            <input type="text" name="txtAutor" class="form-control">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-2 offset-md-3">Descripción</div>
+        <div class="col-12 col-md-5">
+            <textarea name="txtDescripcion" class="form-control" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-2 offset-md-3">Precio</div>
+        <div class="col-12 col-md-5">
+            <input type="number" name="txtPrecio" class="form-control">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-2 offset-md-3">Género</div>
+        <div class="col-12 col-md-5">
+            <input type="text" name="txtGenero" class="form-control">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-2 offset-md-3">Activo</div>
+        <div class="col-12 col-md-5">
+            <input type="checkbox" name="chkActivo" class="form-check-input">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-2 offset-md-3">Opciones</div>
+        <div class="col-12 col-md-5">
+            <input type="submit" name="btnGuardar" value="Guardar" class="btn btn-danger float-end">
+            <input type="submit" name="btnLimpiar" value="Limpiar" class="btn btn-outline-secondary float-end mx-2">
+            <a href="{% url 'listar_mangas' %}" class="btn btn-warning">Listar</a>
+        </div>
+    </div>
+</form>
+{% endblock %}
